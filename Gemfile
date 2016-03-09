@@ -50,3 +50,11 @@ gem "font-awesome-rails"
 
 # Devise
 gem 'devise'
+# Annotate Models
+gem 'annotate', github: 'ctran/annotate_models'
+
+# Simple Form
+gem 'simple_form'
+
+# Wysiwyg Bootstrap
+gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'

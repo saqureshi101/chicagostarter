@@ -1,9 +1,11 @@
 <% if @displayed_projects.any? %>
-<%= render "projects/carousel" %>
+
+<%= render "carousel", projects: @displayed_projects %>
 
 <div class="container">
 	<br><br><br>
-	<h3 class="project-subtitle">Our Project</h3>
+	<h3 class="project-subtitle">Our Projects</h3>
+	
 	<div class="row">
 		<%= render @projects %>
 	</div>
@@ -14,7 +16,9 @@
 <div class="container text-center">
 	<br><br><br>
 	<h2>Create your first project</h2>
-	<%= link_to "Start project!", "#", class: "btn btn-success btn-lg" %>
+	<%= link_to "Start_project", "#", class: "btn btn-success btn-lg" %>
 </div>
 
+
 <% end %>
+
