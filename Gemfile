@@ -58,3 +58,25 @@ gem 'simple_form'
 
 # Wysiwyg Bootstrap
 gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'
+# Date Validator
+gem 'date_validator'
+# Date Picker
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+
+# MomentJS
+gem 'momentjs-rails'
+
+# Braintree
+gem 'braintree'
+
+# Delayed Job Active Record
+gem 'delayed_job_active_record'
+
+# Delayed Job Web
+gem 'delayed_job_web'
+
+# Friendly ID
+gem 'friendly_id', '~> 5.1.0'
+
+# Cancancan
+gem 'cancancan', '~> 1.10'

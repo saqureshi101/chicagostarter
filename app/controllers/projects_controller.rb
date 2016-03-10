@@ -14,16 +14,20 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
-
 class ProjectsController < ApplicationController
-	before_action :authenticate_user!, except: [:index, :show]
-	before_action :set_project, only: [:show, :edit, :update, :destroy]
-	 def index
-	 	@projects = Project.all
-	 	 @displayed_projects = Project.take(4)
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_pledges, only: [:show]
+  load_and_authorize_resource
+
+  def index
+    @projects = Project.all
+    @displayed_projects = Project.take(4)
   end
 
-   def show
+  def show
+    @rewards = @project.rewards
+    @days_to_go = @project.days_to_go
   end
 
   def new
@@ -33,7 +37,7 @@ class ProjectsController < ApplicationController
   def edit
   end
 
-   def create
+  def create
     @project = current_user.projects.build(project_params)
 
     respond_to do |format|
@@ -46,7 +50,8 @@ class ProjectsController < ApplicationController
       end
     end
   end
- def update
+
+  def update
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: "Project was successfully updated" }
@@ -57,6 +62,7 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
   def destroy
     @project.destroy
     respond_to do |format|
@@ -64,10 +70,15 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }      
     end
   end
+
   private
 
-   def set_project
-      @project = Project.find(params[:id])
+   def set_pledges
+      @pledges = @project.pledges      
+    end
+
+    def set_project
+      @project = Project.friendly.find(params[:id])
     end
 
     def project_params
@@ -75,3 +86,4 @@ class ProjectsController < ApplicationController
     end
 
 end
+
